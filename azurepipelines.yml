@@ -33,13 +33,6 @@ stages:
                 Invoke-Pester ./ci -OutputFormat NUnitXml -OutputFile ./TEST-CI.xml -EnableExit
               failOnStderr: true
               pwsh: true
-          - task: AzureKeyVault@1
-            displayName: 'Get azure devops API token from Keyvault'
-            condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-            inputs:
-              azureSubscription: ${{ variables.serviceConnection }}
-              keyVaultName: ${{ variables.keyvaultName }}
-              secretsFilter: 'azure-devops-token'
 
           - task: Bash@3
             displayName: "Update or Create Variable Groups"
