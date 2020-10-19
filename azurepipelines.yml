@@ -1,11 +1,7 @@
 # Docs:
 # https://aka.ms/yaml
 
-trigger:
-  batch: true
-  branches:
-    include:
-    - master
+trigger:none
 
 variables:
   serviceConnection: azurerm-nonprod
